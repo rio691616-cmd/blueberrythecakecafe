@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueberry || The Cake Cafe</title>
+    <meta name="description"
+        content="Freshly Baked Happiness at Blueberrythecakecafe. Explore our cakes, pastries, and custom orders.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo/Blueberry%20logo.png.png" alt="Blueberry The Cake Cafe Logo" class="navbar-logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About</a>
+                <a href="#locations">Locations</a>
+                <a href="#contact">+91 7401017555</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#menu" class="btn btn-primary btn-sm">Order Now</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Nav Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#locations">Locations</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Floating Offer Pop-up -->
+    <div class="floating-offer" id="floatingOffer">
+        <div class="offer-content">
+            <button class="close-offer" id="closeOffer">&times;</button>
+            <h4>Sweet Deal! 🍰</h4>
+            <p>Get 10% off today on all custom orders.</p>
+            <a href="#contact" class="btn btn-secondary btn-sm">Claim Now</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div id="grainient-container"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+        <div class="hero-overlay" style="z-index: 1;"></div>
+        <div class="hero-content fade-in" style="z-index: 2;">
+            <!-- Using text as primary, but styling it beautifully -->
+            <div class="hero-logo-large">
+                <h1>Blueberry</h1>
+                <p class="hero-subtext">The Cake Cafe</p>
+            </div>
+            <h2 class="tagline">"Freshly Baked Happiness"</h2>
+            <p class="hero-desc">Premium quality, affordable prices, and unforgettable taste.</p>
+            <a href="#menu" class="btn btn-primary btn-glow">View Menu</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container fade-in-scroll">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Welcome to <strong>Blueberry The Cake Cafe</strong>, where passion meets pastry. We believe that
+                        every celebration deserves a handcrafted masterpiece.</p>
+                    <ul class="about-highlights">
+                        <li><i class="fas fa-check-circle"></i> <strong>Affordable:</strong> Premium taste without the
+                            premium price tag.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Quality Products:</strong> Made with the finest,
+                            freshest ingredients daily.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Good Ambience:</strong> Visit our stores for a
+                            warm, welcoming experience.</li>
+                    </ul>
+                </div>
+                <!-- About illustration/image placeholder -->
+                <div class="about-image-wrapper">
+                    <div class="about-image placeholder-img parallax-img">
+                        <i class="fas fa-store"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Carousel (Extras) -->
+    <section class="featured-carousel fade-in-scroll">
+        <div class="carousel-container" id="carouselContainer">
+            <!-- Dynamically populated via JS -->
+        </div>
+    </section>
+
+    <!-- Menu Section (MAIN) -->
+    <section class="menu-section bg-light" id="menu">
+        <div class="container">
+            <div class="section-header fade-in-scroll">
+                <h2>Our Sweet Menu</h2>
+                <div class="divider"></div>
+                <p>Explore our wide variety of freshly baked goods.</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="menu-filters fade-in-scroll" id="menuFilters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Cakes">Cakes</button>
+                <button class="filter-btn" data-filter="Pastries">Pastries</button>
+                <button class="filter-btn" data-filter="Desserts">Desserts</button>
+                <button class="filter-btn" data-filter="Custom Orders">Custom Orders</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- Items populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations" id="locations">
+        <div class="container fade-in-scroll">
+            <div class="section-header">
+                <h2>Visit Us</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="locations-grid" id="locationsGrid">
+                <!-- Branches populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section shrink-bg" id="contact">
+        <div class="container fade-in-scroll">
+            <div class="contact-card">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Have a question or want to place a custom order? We'd love to hear from you!</p>
+                    <div class="contact-methods">
+                        <div class="method">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 7401017555</span>
+                        </div>
+                        <div class="method">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@blueberrythecakecafe.com</span>
+                        </div>
+                        <a href="https://wa.me/917401017555" target="_blank" class="btn btn-whatsapp zoom-hover">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-glow">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo/Blueberry%20logo.png.png" alt="Blueberry The Cake Cafe Logo" class="footer-logo-img">
+                    <p>The Cake Cafe</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Blueberry The Cake Cafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Framer Component Integration via ESM -->
+    <script type="module">
+        import React from 'https://esm.sh/react@18';
+        import { createRoot } from 'https://esm.sh/react-dom@18/client';
+        import Grainient from 'https://framer.com/m/Grainient-jYgF3Q.js@kRCbGYaFHlTmTURJSDDV';
+
+        const rootEl = document.getElementById('grainient-container');
+        if (rootEl) {
+            const root = createRoot(rootEl);
+            // Render the component to fill the background seamlessly
+            root.render(React.createElement(Grainient, {
+                style: { width: "100%", height: "100%", inset: 0 },
+                text: "Blueberrycakecafe",
+                content: "Blueberrycakecafe",
+                title: "Blueberrycakecafe"
+            }));
+        }
+    </script>
+</body>
+
+</html>
