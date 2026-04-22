@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueberry || Cakes Price List</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #1e3a8a; /* Deep blue */
+            --accent-blue: #3b82f6; /* Lighter blue */
+            --bg-color: #f0f5ff; /* Very light blue background */
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #bfdbfe 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            color: var(--text-dark);
+            /* Subtle pattern overlay */
+            background-image: radial-gradient(var(--accent-blue) 0.5px, transparent 0.5px), radial-gradient(var(--accent-blue) 0.5px, #e0e7ff 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Decorative background elements */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        body::before {
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: #93c5fd;
+        }
+
+        body::after {
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: #60a5fa;
+        }
+
+        .header-logo {
+            z-index: 1;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header-logo img {
+            max-height: 80px;
+            filter: drop-shadow(0 4px 6px rgba(30, 58, 138, 0.2));
+            border-radius: 50%;
+        }
+
+        .price-list-wrapper {
+            z-index: 1;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .glass-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px 24px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.05rem;
+            border-bottom: 2px solid rgba(30, 58, 138, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 12px;
+        }
+
+        th:nth-child(2), th:nth-child(3), td:nth-child(2), td:nth-child(3) {
+            text-align: center;
+            width: 150px;
+        }
+
+        tr.item-row {
+            background: var(--white);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            position: relative;
+        }
+
+        tr.item-row:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 24px rgba(30, 58, 138, 0.12);
+        }
+
+        tr.item-row td:first-child {
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        tr.item-row td:last-child {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        .cake-icon {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            background: var(--bg-color);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .price-badge {
+            background: var(--bg-color);
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .order-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transform: translateX(-15px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+        }
+
+        tr.item-row:hover .order-btn {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .order-btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+        }
+        
+        .order-cell {
+            text-align: right !important;
+            width: 140px;
+            padding-right: 24px !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .glass-container {
+                padding: 24px 16px;
+                border-radius: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                min-width: 100%;
+                border-spacing: 0 10px;
+            }
+
+            th {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+
+            th:nth-child(2), th:nth-child(3), td:nth-child(2), td:nth-child(3) {
+                width: auto;
+            }
+
+            td {
+                padding: 12px;
+            }
+
+            tr.item-row td:first-child {
+                font-size: 1rem;
+                gap: 8px;
+            }
+
+            .cake-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .price-badge {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+
+            .order-cell {
+                width: auto;
+                padding-right: 12px !important;
+            }
+
+            /* Always show order button on mobile */
+            .order-btn {
+                opacity: 1;
+                transform: none;
+                padding: 8px;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                justify-content: center;
+            }
+
+            .order-btn span {
+                display: none; /* Hide text, show only icon on mobile */
+            }
+
+            .order-btn i {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            th:nth-child(2), th:nth-child(3) {
+                font-size: 0.8rem;
+            }
+            .price-badge {
+                padding: 4px 8px;
+                font-size: 0.85rem;
+            }
+            tr.item-row td:first-child {
+                font-size: 0.95rem;
+            }
+            .cake-icon {
+                display: none; /* Save space on very small screens */
+            }
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+            z-index: 1;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <div class="header-logo">
+        <a href="index.html">
+            <img src="logo/Blueberry%20logo.png.png" alt="Blueberry The Cake Cafe">
+        </a>
+    </div>
+
+    <div class="price-list-wrapper">
+        <div class="glass-container">
+            <div class="header">
+                <h1>Cakes Price List</h1>
+                <p>Freshly baked perfection, crafted with love. Tap any cake to order via WhatsApp.</p>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>1 Kg</th>
+                            <th>1/2 Kg</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-list-body">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // WhatsApp number from your existing website data
+        const phone = "917401017555";
+        
+        // Data parsed from Google Sheets
+        const cakeData = [
+            { name: "Black Forest", price1kg: "550", priceHalfKg: "320" },
+            { name: "Strawberry", price1kg: "550", priceHalfKg: "320" },
+            { name: "Pineapple", price1kg: "550", priceHalfKg: "320" },
+            { name: "Mango", price1kg: "550", priceHalfKg: "320" },
+            { name: "Orange", price1kg: "550", priceHalfKg: "320" },
+            { name: "Green Apple", price1kg: "550", priceHalfKg: "320" },
+            { name: "Blackcurrant", price1kg: "550", priceHalfKg: "320" },
+            { name: "Honey Cake", price1kg: "600", priceHalfKg: "320" },
+            { name: "Kiwi", price1kg: "600", priceHalfKg: "320" },
+            { name: "Lychee", price1kg: "600", priceHalfKg: "320" },
+            { name: "Irish Coffee", price1kg: "600", priceHalfKg: "320" },
+            { name: "White Forest", price1kg: "630", priceHalfKg: "350" },
+            { name: "Butterscotch", price1kg: "630", priceHalfKg: "350" },
+            { name: "German Black Forest", price1kg: "630", priceHalfKg: "350" },
+            { name: "Guava", price1kg: "630", priceHalfKg: "350" }
+        ];
+
+        const tbody = document.getElementById('price-list-body');
+
+        // Function to create WhatsApp link with specific message format
+        const createWhatsAppLink = (cakeName) => {
+            const message = `hi , i would like to order / ${cakeName}`;
+            return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        };
+
+        // Render the list
+        cakeData.forEach(cake => {
+            const tr = document.createElement('tr');
+            tr.className = 'item-row';
+            
+            const whatsappUrl = createWhatsAppLink(cake.name);
+
+            // Make the entire row clickable
+            tr.onclick = (e) => {
+                // Prevent double trigger if they click exactly on the button
+                if(!e.target.closest('.order-btn')) {
+                    window.open(whatsappUrl, '_blank');
+                }
+            };
+
+            tr.innerHTML = `
+                <td>
+                    <div class="cake-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    ${cake.name}
+                </td>
+                <td><span class="price-badge">₹${cake.price1kg}</span></td>
+                <td><span class="price-badge">₹${cake.priceHalfKg}</span></td>
+                <td class="order-cell">
+                    <a href="${whatsappUrl}" target="_blank" class="order-btn" aria-label="Order ${cake.name} on WhatsApp" onclick="event.stopPropagation();">
+                        <i class="fab fa-whatsapp"></i> <span>Order</span>
+                    </a>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    </script>
+</body>
+</html>
